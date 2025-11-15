@@ -8,17 +8,14 @@
 
 / {
     behaviors {
-#if ZMK_BEHAVIOR_OMIT(MMV)
-        /omit-if-no-ref/
-#endif
-        mmv: mouse_move {
+        /omit-if-no-ref/ mmv: mouse_move {
             compatible = "zmk,behavior-input-two-axis";
             #binding-cells = <1>;
             x-input-code = <INPUT_REL_X>;
             y-input-code = <INPUT_REL_Y>;
             time-to-max-speed-ms = <300>;
             acceleration-exponent = <1>;
-            display-name = "Mouse Move";
+            display-name = "zmk_reserved_mouse_move";
         };
     };
 

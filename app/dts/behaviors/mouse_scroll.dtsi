@@ -9,17 +9,14 @@
 
 / {
     behaviors {
-#if ZMK_BEHAVIOR_OMIT(MSC)
-        /omit-if-no-ref/
-#endif
-        msc: mouse_scroll {
+        /omit-if-no-ref/ msc: mouse_scroll {
             compatible = "zmk,behavior-input-two-axis";
             #binding-cells = <1>;
             x-input-code = <INPUT_REL_HWHEEL>;
             y-input-code = <INPUT_REL_WHEEL>;
             time-to-max-speed-ms = <300>;
             acceleration-exponent = <0>;
-            display-name = "Mouse Scroll";
+            display-name = "zmk_reserved_mouse_scroll";
         };
     };
 
