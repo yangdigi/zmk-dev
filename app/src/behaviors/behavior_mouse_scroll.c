@@ -23,8 +23,8 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
 static const struct behavior_parameter_value_metadata param_values[] = {
     {.display_name = "S-UP", .type = BEHAVIOR_PARAMETER_VALUE_TYPE_VALUE, .value = SCROLL_UP},
-    {.display_name = "S-LEFT", .type = BEHAVIOR_PARAMETER_VALUE_TYPE_VALUE, .value = SCROLL_LEFT},
     {.display_name = "S-DOWN", .type = BEHAVIOR_PARAMETER_VALUE_TYPE_VALUE, .value = SCROLL_DOWN},
+    {.display_name = "S-LEFT", .type = BEHAVIOR_PARAMETER_VALUE_TYPE_VALUE, .value = SCROLL_LEFT},
     {.display_name = "S-RIGHT", .type = BEHAVIOR_PARAMETER_VALUE_TYPE_VALUE, .value = SCROLL_RIGHT}
 };
 
@@ -67,7 +67,7 @@ static int on_keymap_binding_released(struct zmk_behavior_binding *binding,
     return 0;
 }
 
-static const struct behavior_driver_api behavior_mouse_key_press_driver_api = {
+static const struct behavior_driver_api behavior_mouse_scroll_driver_api = {
     .binding_pressed = on_keymap_binding_pressed,
     .binding_released = on_keymap_binding_released,
 #if IS_ENABLED(CONFIG_ZMK_BEHAVIOR_METADATA)
@@ -75,10 +75,10 @@ static const struct behavior_driver_api behavior_mouse_key_press_driver_api = {
 #endif // IS_ENABLED(CONFIG_ZMK_BEHAVIOR_METADATA)
 };
 
-#define MKP_INST(n)                                                                                \
+#define MSC_INST(n)                                                                                \
     BEHAVIOR_DT_INST_DEFINE(n, NULL, NULL, NULL, NULL, POST_KERNEL,                                \
                             CONFIG_KERNEL_INIT_PRIORITY_DEFAULT,                                   \
-                            &behavior_mouse_key_press_driver_api);
+                            &behavior_mouse_scroll_driver_api);
 
 DT_INST_FOREACH_STATUS_OKAY(MSC_INST)
 
