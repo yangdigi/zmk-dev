@@ -41,7 +41,7 @@ static const struct behavior_parameter_metadata metadata = {
 #endif
 
 static void process_key_state(const struct device *dev, int32_t val, bool pressed) {
-    for (int i = 0; i < ZMK_HID_MOUSE_NUM_BUTTONS; i++) {
+    for (int i = 0; i < 4; i++) {
         if (val & BIT(i)) {
             WRITE_BIT(val, i, 0);
             input_report_key(dev, INPUT_BTN_0 + i, pressed ? 1 : 0, val == 0, K_FOREVER);
